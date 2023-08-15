@@ -1,0 +1,27 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+void sett(int n)
+{
+    set<int> myset = { 1, 3, 4, 5, 33, 55, 66, 0 };
+
+    for (set<int>::iterator it = myset.begin(); it != myset.end(); )
+    {
+        if (*it < n)
+        {
+            it = myset.erase(it);
+        }
+        else
+        {
+            cout << *it << " ";
+            ++it;
+        }
+    }
+}
+
+
+int main()
+{
+   sett(6);
+}
