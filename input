@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class InputIterator
+{
+
+   const T* current;
+
+public:
+   InputIterator(const T* ban) : current(ban) {}
+
+    const T& operator*() {
+        return *current;
+    }
+
+    const T* operator->()  {
+        return current;
+    }
+
+    InputIterator& operator++() {
+        ++current;
+        return *this;
+    }
+
+    InputIterator operator++(int) {
+        InputIterator ban = *this;
+        ++current;
+        return ban;
+    }
+
+    bool operator==(const InputIterator& other)  {
+        return current == other.current;
+    }
+
+    bool operator!=(const InputIterator& other)  {
+        return !(*this == other);
+    }
+
+
+};
+
+int main() {
+    int arr[] = { 1, 2, 3, 4, 5 };
+
+    InputIterator<int> begin(arr);
+    InputIterator<int> end(arr + sizeof(arr) / sizeof(arr[0]));
+
+   
+
+    for (InputIterator<int> it = begin; it != end; ++it) {
+        cout << *it << " ";
+    }
+
+    return 0;
+}
+
